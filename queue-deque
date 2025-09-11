@@ -1,0 +1,16 @@
+from collections import deque
+def is_empty(arr):
+   return len(arr) ==0
+        
+# Usage
+queue_car = deque()
+print("queue using deque")
+
+print("Initially empty?", is_empty(queue_car) )  # True
+queue_car.append(3)
+queue_car.append(5)
+queue_car.append(51)
+print("queue contents:", queue_car)  # Uses __str__
+print("Top element:", queue_car[0])  # 5
+queue_car.popleft()
+print("After pop:", queue_car)
