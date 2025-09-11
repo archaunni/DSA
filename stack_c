@@ -1,0 +1,40 @@
+class stack_con:
+    def __init__(self):
+        self.stack = []
+    
+    def top(self):
+        if len(self.stack) > 0:
+            return self.stack[-1]
+        else:
+            return None
+        
+    def pop(self):
+        if self.is_empty():
+            print("Underflow")
+            return None
+        else:
+            return self.stack.pop()
+    
+    def is_empty(self):
+        return len(self.stack) == 0   # return True/False
+    
+    def push(self, item):
+        self.stack.append(item)
+    
+    def __str__(self):
+        return str(self.stack)
+
+
+# Usage
+stack_var = stack_con()
+print("Stack using list")
+
+print("Initially empty?", stack_var.is_empty())   # True
+stack_var.push(3)
+stack_var.push(5)
+
+print("Stack contents:", stack_var)  # Uses __str__
+print("Top element:", stack_var.top())  # 5
+
+stack_var.pop()
+print("After pop:", stack_var)
