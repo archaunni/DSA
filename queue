@@ -1,0 +1,58 @@
+class queue_con:
+    def __init__(self):
+        self.stack = []
+    
+    def seek(self):
+        if len(self.stack) > 0:
+            return self.stack[0]
+        else:
+            return None
+        
+    def deque(self):
+        if self.is_empty():
+            print("Underflow")
+            return None
+        else:
+            return self.stack.pop(0)
+    
+    def is_empty(self):
+        return len(self.stack) == 0   # return True/False
+    
+    def enque(self, item):
+        self.stack.append(item)
+    
+    def __str__(self):
+        return str(self.stack)
+
+
+# Usage
+queue_car = queue_con()
+print("queue using list")
+
+print("Initially empty?", queue_car.is_empty())   # True
+queue_car.enque(3)
+queue_car.enque(5)
+
+print("queue contents:", queue_car)  # Uses __str__
+print("Top element:", queue_car.seek())  # 5
+
+queue_car.deque()
+print("After pop:", queue_car)
+queue_car.deque()
+print("After pop:", queue_car)
+queue_car.deque()
+print("After pop:", queue_car)
+
+queue_car.enque(5)
+queue_car.enque(3)
+
+
+print("queue contents:", queue_car)  # Uses __str__
+print("Top element:", queue_car.seek())  # 5
+
+queue_car.deque()
+print("After pop:", queue_car)
+queue_car.deque()
+print("After pop:", queue_car)
+queue_car.deque()
+print("After pop:", queue_car)
