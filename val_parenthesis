@@ -1,0 +1,30 @@
+class Solution(object):
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        list_s=list(s)
+        len_s=len(list_s)
+        stack=[]
+        
+        dec=1
+        for i in range(len_s):
+            if list_s[i] in ['(','{','[']:
+                stack.append(list_s[i])
+            else:
+                po_e=stack.pop()
+                if list_s[i] == ')' and po_e=='(':
+                    continue
+                elif list_s[i] == '}' and po_e=='{':
+                    continue
+                elif list_s[i] == ']' and po_e=='[':
+                    continue
+                else:
+                    dec=0
+                    break
+        if dec==0:
+            return False
+        else:
+            return True
+        
