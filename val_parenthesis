@@ -8,18 +8,18 @@ class Solution(object):
         len_s=len(list_s)
         stack=[]
         push_c=0
-        dec=1
-        if len_s>1:
+       
+        if len_s==1:
+                return False
+        else:
             for i in range(len_s):
                 if list_s[i] in ['(','{','[']:
                     stack.append(list_s[i])
                     push_c+=1
                 else:
-                    if len(stack)>0:
-                        po_e=stack.pop()
-                    else:
-                        dec=0
-                        break
+                    
+                    po_e=stack.pop() if stack else '#'
+                    
                     if list_s[i] == ')' and po_e=='(':
                         push_c-=1
                         continue
@@ -30,16 +30,10 @@ class Solution(object):
                         push_c-=1
                         continue
                     else:
-                        dec=0
-                        break
-        if dec==0:
-            return False
-        else:
-            if len_s==1:
-                return False
+                       return False
+        
+            if push_c==0:
+                return True
             else:
-                if push_c==0:
-                    return True
-                else:
-                    return False
+                return False
         
