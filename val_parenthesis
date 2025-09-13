@@ -7,24 +7,39 @@ class Solution(object):
         list_s=list(s)
         len_s=len(list_s)
         stack=[]
-        
+        push_c=0
         dec=1
-        for i in range(len_s):
-            if list_s[i] in ['(','{','[']:
-                stack.append(list_s[i])
-            else:
-                po_e=stack.pop()
-                if list_s[i] == ')' and po_e=='(':
-                    continue
-                elif list_s[i] == '}' and po_e=='{':
-                    continue
-                elif list_s[i] == ']' and po_e=='[':
-                    continue
+        if len_s>1:
+            for i in range(len_s):
+                if list_s[i] in ['(','{','[']:
+                    stack.append(list_s[i])
+                    push_c+=1
                 else:
-                    dec=0
-                    break
+                    if len(stack)>0:
+                        po_e=stack.pop()
+                    else:
+                        dec=0
+                        break
+                    if list_s[i] == ')' and po_e=='(':
+                        push_c-=1
+                        continue
+                    elif list_s[i] == '}' and po_e=='{':
+                        push_c-=1
+                        continue
+                    elif list_s[i] == ']' and po_e=='[':
+                        push_c-=1
+                        continue
+                    else:
+                        dec=0
+                        break
         if dec==0:
             return False
         else:
-            return True
+            if len_s==1:
+                return False
+            else:
+                if push_c==0:
+                    return True
+                else:
+                    return False
         
