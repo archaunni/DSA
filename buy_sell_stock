@@ -1,0 +1,19 @@
+class Solution(object):
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        length=len(prices)
+        arr_max_profit=[]
+        for i in range(length):
+            profit=0
+            for j in range(i,length):
+                diff=prices[j]-prices[i]
+                if profit < diff:
+                    profit=diff
+            print(i)
+            arr_max_profit.append(profit)
+        return max(arr_max_profit)
+            
+        
