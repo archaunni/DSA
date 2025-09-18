@@ -1,0 +1,47 @@
+class Solution(object):
+    def maxDistance(self, colors):
+        """
+        :type colors: List[int]
+        :rtype: int
+        """
+        maxd=0
+        start=colors[0]
+
+#first approach brute force
+        # for i in range(len(colors)):
+        #     for j in range(i,len(colors)):
+        #         if colors[i]!=colors[j]:
+        #             maxd=max(abs(i-j), maxd)
+        # return maxd
+
+#second approach using while
+        # j=len(colors)-1
+        # while start==colors[j]:
+        #     j-=1
+        # maxd=max(abs(0-j), maxd)
+        # start=colors[-1]
+        # i=0
+        # while start==colors[i]:
+        #     i+=1
+        # maxd=max(abs(len(colors)-1-i), maxd)
+        # return maxd
+
+#third
+        for i,dest in enumerate(reversed(colors)):
+            index= len(colors)-1-i
+           
+            if start!=dest:
+                maxd=max(abs(0-index), maxd)
+               
+                break
+        start=colors[-1]
+        j=0
+        for dest in colors[0:]:
+           
+            j+=1
+            if start!=dest:
+                maxd=max(abs(len(colors)-j), maxd)
+                break
+        return maxd
+
+        
