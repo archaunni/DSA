@@ -1,0 +1,30 @@
+class Solution(object):
+    def numIslands(self, grid):
+        """
+        :type grid: List[List[str]]
+        :rtype: int
+        """
+        visited=set()
+        stack=[]
+        rows=len(grid)
+        cols=len(grid[0])
+        count=0
+
+        def dfs(r,c):
+            
+            stack=[(r,c)]
+
+            while stack:
+                x,y=stack.pop()
+                if x<0 or y<0 or x>=rows or y>=cols or grid[x][y]=="0" or (x,y) in visited:
+                    continue
+                visited.add((x,y))
+                stack.extend([(x,y-1),(x,y+1),(x+1,y),(x-1,y)])
+
+
+        for r in range(rows):
+            for c in range(cols):
+                if grid[r][c]=="1" and (r,c) not in visited:
+                    dfs(r,c)
+                    count+=1
+        return count
