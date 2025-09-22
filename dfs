@@ -1,0 +1,41 @@
+def dfs(graph, root):
+    visited=set()
+    stack=[root]
+
+    while stack:
+        node=stack.pop()
+        if node not in visited:
+            visited.add(node)
+            print(node)
+
+            for neigh in reversed(graph[node]):
+                stack.append(neigh)
+
+graph={1:[2,3], 
+      2:[4,5],
+      3:[],
+      4:[],
+        5:[]
+}
+dfs(graph,1)
+
+#using recursion
+
+def dfs_r(graph, root, visited=None):
+    if visited == None:
+        visited=set()
+    if root not in visited:
+        visited.add(root)
+        print(root)
+
+        for neigh in graph[root]:
+           
+                dfs_r(graph,neigh,visited)
+
+graph={1:[2,3], 
+      2:[4,5],
+      3:[],
+      4:[],
+        5:[]
+}
+dfs_r(graph,1)
